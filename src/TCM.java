@@ -27,5 +27,20 @@ public class TCM {
         bogieIDs.add("BG101");
 
         System.out.println("Unique Bogie IDs: " + bogieIDs);
+
+
+        LinkedList<String> consist = new LinkedList<>();
+
+        consist.add("Engine");
+        consist.add("Sleeper");
+        consist.add("Cargo");
+        consist.add("Guard");
+
+        consist.add(2, "Pantry Car");
+
+        consist.removeFirst();
+        consist.removeLast();
+
+        System.out.println("Final Train Consist: " + consist);
     }
 }
