@@ -18,5 +18,14 @@ public class TCM {
 
         boolean hasSleeper = passengerBogies.contains("Sleeper");
         System.out.println("Is Sleeper present? " + hasSleeper);
+
+
+        Set<String> bogieIDs = new HashSet<>();
+
+        bogieIDs.add("BG101");
+        bogieIDs.add("BG102");
+        bogieIDs.add("BG101");
+
+        System.out.println("Unique Bogie IDs: " + bogieIDs);
     }
 }
