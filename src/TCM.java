@@ -42,5 +42,16 @@ public class TCM {
         consist.removeLast();
 
         System.out.println("Final Train Consist: " + consist);
+
+
+        Set<String> formation = new LinkedHashSet<>();
+
+        formation.add("Engine");
+        formation.add("Sleeper");
+        formation.add("Cargo");
+        formation.add("Guard");
+        formation.add("Sleeper");
+
+        System.out.println("Final formation order: " + formation);
     }
 }
