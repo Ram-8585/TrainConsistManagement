@@ -106,6 +106,15 @@ public class TCM {
         groupedBogies.forEach((type, list) -> System.out.println(type + ": " + list));
 
 
+
+
+        int totalSeats = bogieList.stream()
+                .map(b -> b.capacity)
+                .reduce(0, (a, b) -> a + b);
+
+        System.out.println("Total Seating Capacity of the Train: " + totalSeats);
+
+
         }
 
     }
