@@ -14,6 +14,16 @@ class Bogie {
     }
 }
 
+class GoodsBogie {
+    String shape;
+    String cargo;
+
+    GoodsBogie(String shape, String cargo) {
+        this.shape = shape;
+        this.cargo = cargo;
+    }
+}
+
 public class TCM {
         public static void main(String[] args) {
         System.out.println("=== Train Consist Management App ===");
@@ -125,6 +135,17 @@ public class TCM {
         System.out.println("Is Cargo Code " + cargoCode + " valid? " + isCargoValid);
 
 
+
+
+        List<GoodsBogie> goodsBogies = new ArrayList<>();
+        goodsBogies.add(new GoodsBogie("Cylindrical", "Petroleum"));
+        goodsBogies.add(new GoodsBogie("Rectangular", "Coal"));
+
+        boolean isSafe = goodsBogies.stream()
+                .filter(gb -> gb.shape.equals("Cylindrical"))
+                .allMatch(gb -> gb.cargo.equals("Petroleum"));
+
+        System.out.println("Is the train safety compliant? " + isSafe);
         }
 
     }
