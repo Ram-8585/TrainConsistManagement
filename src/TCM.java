@@ -180,6 +180,72 @@ public class TCM {
         }
 
         System.out.println("Sorted Capacities (Bubble Sort): " + Arrays.toString(capacities));
+
+
+
+        // UC17: Using built-in Arrays.sort() for Bogie Names
+        System.out.println("\n--- UC17: Built-in Sorting (Arrays.sort) ---");
+        String[] bogieNames = {"Sleeper", "AC Chair", "First Class", "General", "Luxury"};
+        
+        System.out.println("Original Names: " + Arrays.toString(bogieNames));
+
+        // Sorting alphabetically
+        Arrays.sort(bogieNames);
+
+        System.out.println("Sorted Names (Alphabetical): " + Arrays.toString(bogieNames));
+
+        // UC18: Linear Search for a Bogie ID
+        System.out.println("\n--- UC18: Linear Search ---");
+        String[] bogieIDs = {"BG101", "BG205", "BG309", "BG412", "BG550"};
+        String searchKey = "BG309";
+        boolean found = false;
+
+        for (int i = 0; i < bogieIDs.length; i++) {
+            if (bogieIDs[i].equals(searchKey)) {
+                found = true;
+                System.out.println("Bogie " + searchKey + " found at index: " + i);
+                break; // Stop searching once found
+            }
+        }
+
+        if (!found) {
+            System.out.println("Bogie " + searchKey + " not found in the consist.");
+        }
+
+
+        // UC19: Binary Search (Requires Sorted Data)
+        System.out.println("\n--- UC19: Binary Search (Optimized) ---");
+        
+        // Step 1: Data must be sorted for Binary Search to work
+        String[] sortedBogieIDs = {"BG101", "BG205", "BG309", "BG412", "BG550"};
+        String targetID = "BG412";
+        
+        int low = 0;
+        int high = sortedBogieIDs.length - 1;
+        int resultIndex = -1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            // Compare strings lexicographically
+            int comparison = targetID.compareTo(sortedBogieIDs[mid]);
+
+            if (comparison == 0) {
+                resultIndex = mid;
+                break; // Found it!
+            } else if (comparison > 0) {
+                low = mid + 1; // Look in the right half
+            } else {
+                high = mid - 1; // Look in the left half
+            }
+        }
+
+        if (resultIndex != -1) {
+            System.out.println("Bogie " + targetID + " found at index: " + resultIndex + " (via Binary Search)");
+        } else {
+            System.out.println("Bogie " + targetID + " not found.");
+        }
+        
         }
     }
 }
