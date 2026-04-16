@@ -40,6 +40,12 @@ class GoodsBogie {
     }
 }
 
+class CargoSafetyException extends Exception {
+    public CargoSafetyException(String message) {
+        super(message);
+    }
+}
+
 public class TCM {
     public static void main(String[] args) {
         // We wrap the whole logic in a try-catch because UC7-UC13 use the Bogie constructor
@@ -133,6 +139,47 @@ public class TCM {
 
         } catch (InvalidCapacityException e) {
             System.out.println("Caught Expected Exception: " + e.getMessage());
+
+            // UC15: Safe Cargo Assignment (try-catch-finally)
+        System.out.println("\n--- UC15: Safe Cargo Assignment ---");
+        String assignedShape = "Rectangular";
+        String assignedCargo = "Petroleum";
+
+        try {
+            System.out.println("Validating cargo: " + assignedCargo + " for " + assignedShape + " bogie...");
+            
+            // Safety Rule: Petroleum MUST be in Cylindrical bogies
+            if (assignedShape.equals("Rectangular") && assignedCargo.equals("Petroleum")) {
+                throw new CargoSafetyException("CRITICAL ERROR: Petroleum leakage risk in Rectangular bogie!");
+            }
+            System.out.println("Cargo assigned successfully.");
+            
+        } catch (CargoSafetyException e1) {
+            System.out.println("Safety Violation: " + e1.getMessage());
+        } finally {
+            // This always runs
+            System.out.println("Cleanup: Safety inspection log updated and sensors reset.");
+        }
+        // UC16: Bubble Sort - Manual Sorting Logic
+        System.out.println("\n--- UC16: Manual Sorting (Bubble Sort) ---");
+        int[] capacities = {72, 56, 24, 70, 60};
+        int n = capacities.length;
+
+        System.out.println("Original Capacities: " + Arrays.toString(capacities));
+
+        // Bubble Sort Algorithm
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (capacities[j] > capacities[j + 1]) {
+                    // Swap elements
+                    int temp = capacities[j];
+                    capacities[j] = capacities[j + 1];
+                    capacities[j + 1] = temp;
+                }
+            }
+        }
+
+        System.out.println("Sorted Capacities (Bubble Sort): " + Arrays.toString(capacities));
         }
     }
 }
