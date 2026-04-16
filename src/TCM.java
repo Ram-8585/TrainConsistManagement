@@ -1,7 +1,21 @@
 import java.util.*;
+class Bogie {
+    String type;
+    int capacity;
+
+    Bogie(String type, int capacity) {
+        this.type = type;
+        this.capacity = capacity;
+    }
+
+    @Override
+    public String toString() {
+        return "Bogie{type='" + type + "', capacity=" + capacity + "}";
+    }
+}
 
 public class TCM {
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         System.out.println("=== Train Consist Management App ===");
         List<String> trainConsist = new ArrayList<>();
         System.out.println("Initial bogie count: " + trainConsist.size());
@@ -64,6 +78,21 @@ public class TCM {
         System.out.println("Bogie Capacity Details:");
         for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
             System.out.println(entry.getKey() + " Capacity: " + entry.getValue());
+
+
+            List<Bogie> bogieList = new ArrayList<>();
+        bogieList.add(new Bogie("Sleeper", 72));
+        bogieList.add(new Bogie("AC Chair", 40));
+        bogieList.add(new Bogie("First Class", 24));
+
+        bogieList.sort((b1, b2) -> Integer.compare(b1.capacity, b2.capacity));
+
+        System.out.println("Sorted Bogies by Capacity:");
+        for (Bogie b : bogieList) {
+            System.out.println(b);
+        }
+
+
         }
     }
 }
