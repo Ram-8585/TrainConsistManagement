@@ -99,6 +99,14 @@ public class TCM {
                  .forEach(System.out::println);
 
 
+                 Map<String, List<Bogie>> groupedBogies = bogieList.stream()
+                .collect(java.util.stream.Collectors.groupingBy(b -> b.type));
+
+        System.out.println("Bogies Grouped by Type:");
+        groupedBogies.forEach((type, list) -> System.out.println(type + ": " + list));
+
+
         }
+
     }
 }
