@@ -146,6 +146,25 @@ public class TCM {
                 .allMatch(gb -> gb.cargo.equals("Petroleum"));
 
         System.out.println("Is the train safety compliant? " + isSafe);
+
+
+        // Performance Comparison: Loop vs Stream
+        long startLoop = System.nanoTime();
+        List<Bogie> loopFiltered = new ArrayList<>();
+        for (Bogie b : bogieList) {
+            if (b.capacity > 60) {
+                loopFiltered.add(b);
+            }
+        }
+        long endLoop = System.nanoTime();
+        System.out.println("Loop Filtering Time: " + (endLoop - startLoop) + " ns");
+
+        long startStream = System.nanoTime();
+        List<Bogie> streamFiltered = bogieList.stream()
+                .filter(b -> b.capacity > 60)
+                .collect(java.util.stream.Collectors.toList());
+        long endStream = System.nanoTime();
+        System.out.println("Stream Filtering Time: " + (endStream - startStream) + " ns");
         }
 
     }
