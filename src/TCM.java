@@ -93,6 +93,12 @@ public class TCM {
         }
 
 
+        System.out.println("High Capacity Bogies (Capacity > 50):");
+        bogieList.stream()
+                 .filter(b -> b.capacity > 50)
+                 .forEach(System.out::println);
+
+
         }
     }
 }
