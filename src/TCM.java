@@ -99,6 +99,33 @@ public class TCM {
                  .forEach(System.out::println);
 
 
+                 Map<String, List<Bogie>> groupedBogies = bogieList.stream()
+                .collect(java.util.stream.Collectors.groupingBy(b -> b.type));
+
+        System.out.println("Bogies Grouped by Type:");
+        groupedBogies.forEach((type, list) -> System.out.println(type + ": " + list));
+
+
+
+
+        int totalSeats = bogieList.stream()
+                .map(b -> b.capacity)
+                .reduce(0, (a, b) -> a + b);
+
+        System.out.println("Total Seating Capacity of the Train: " + totalSeats);
+        
+        String trainID = "TRN-1234";
+        String trainIDPattern = "TRN-\\d{4}";
+        boolean isTrainIDValid = java.util.regex.Pattern.matches(trainIDPattern, trainID);
+        System.out.println("Is Train ID " + trainID + " valid? " + isTrainIDValid);
+
+        String cargoCode = "PET-AB";
+        String cargoPattern = "[A-Z]{3}-[A-Z]{2}";
+        boolean isCargoValid = java.util.regex.Pattern.matches(cargoPattern, cargoCode);
+        System.out.println("Is Cargo Code " + cargoCode + " valid? " + isCargoValid);
+
+
         }
+
     }
 }
