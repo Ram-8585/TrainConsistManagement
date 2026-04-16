@@ -113,6 +113,16 @@ public class TCM {
                 .reduce(0, (a, b) -> a + b);
 
         System.out.println("Total Seating Capacity of the Train: " + totalSeats);
+        
+        String trainID = "TRN-1234";
+        String trainIDPattern = "TRN-\\d{4}";
+        boolean isTrainIDValid = java.util.regex.Pattern.matches(trainIDPattern, trainID);
+        System.out.println("Is Train ID " + trainID + " valid? " + isTrainIDValid);
+
+        String cargoCode = "PET-AB";
+        String cargoPattern = "[A-Z]{3}-[A-Z]{2}";
+        boolean isCargoValid = java.util.regex.Pattern.matches(cargoPattern, cargoCode);
+        System.out.println("Is Cargo Code " + cargoCode + " valid? " + isCargoValid);
 
 
         }
